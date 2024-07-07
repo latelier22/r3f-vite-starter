@@ -12,6 +12,14 @@ export const Experience = () => {
         <meshNormalMaterial />
       </mesh> */}
       <Iphone3D position-y={0.4 } rotation-y={Math.PI}/>
+      <Iphone3D position-x={5 } position-y={0.4 } rotation-y={Math.PI} rotation-x={-Math.PI/8}/>
+      <Iphone3D position-x={-5 } position-y={0.4 } rotation-y={Math.PI} rotation-z={Math.PI/2}/>
+      <group position-z={-5 }rotation-y={Math.PI} >
+
+      <Iphone3D position-y={0.4 } rotation-y={Math.PI}/>
+      <Iphone3D position-x={5 } position-y={0.4 } rotation-y={Math.PI} rotation-x={-Math.PI/8}/>
+      <Iphone3D position-x={-5 } position-y={0.4 } rotation-y={Math.PI} rotation-z={Math.PI/2}/>
+      </group>
       <mesh position-y={-0.5} rotation-x={-Math.PI / 2}>
         <planeGeometry args={[100, 100]} />
         <MeshReflectorMaterial
