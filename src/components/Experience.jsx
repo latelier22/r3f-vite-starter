@@ -7,10 +7,10 @@ export const Experience = () => {
     <>
     <Environment preset="city" />
       <OrbitControls />
-      <mesh>
+      {/* <mesh>
         <boxGeometry />
         <meshNormalMaterial />
-      </mesh>
+      </mesh> */}
       <Iphone3D position-y={0.4 } rotation-y={Math.PI}/>
       <mesh position-y={-0.5} rotation-x={-Math.PI / 2}>
         <planeGeometry args={[100, 100]} />
