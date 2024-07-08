@@ -1,7 +1,43 @@
 import React, { useRef, useState, Suspense, useMemo } from 'react'
 import { useLoader, useFrame } from '@react-three/fiber'
-import { useGLTF, useVideoTexture } from '@react-three/drei'
+import { Html,useGLTF, useVideoTexture } from '@react-three/drei'
 import * as THREE from 'three'
+
+import { degToRad, lerp } from "three/src/math/MathUtils";
+
+
+
+const OverlayItem = ({
+  className = "",
+  title,
+  description,
+  price,
+  bgColor,
+  ...props
+}) => {
+  const currentPage = "store"
+  return (
+    <Html
+      transform
+      distanceFactor={1.2}
+      center
+      className={`w-48 rounded-md overflow-hidden ${
+        currentPage === "store" ? "" : "opacity-0"
+      } transition-opacity duration-1000 ${className}`}
+      {...props}
+    >
+      <div className="bg-white bg-opacity-50 backdrop-blur-lg text-xs p-2 w-full">
+        <h2 className="font-bold">{title}</h2>
+        <p>{description}</p>
+      </div>
+      <button
+        className={`${bgColor} hover:bg-opacity-50 transition-colors duration-500 px-4 py-2 font-bold text-white w-full text-xs`}
+      >
+        Commander ${price}
+      </button>
+    </Html>
+  );
+};
 
 export function Model(props) {
   const { nodes, materials } = useGLTF('/modeles3D/IPHONE13.glb')
@@ -16,6 +52,17 @@ export function Model(props) {
 
   return (
     <group {...props} dispose={null}>
+      <OverlayItem
+              position-x={-1}
+              position-y={0}
+              position-z={0.1}
+              rotation-y={degToRad(180)}
+              title={"Backpack"}
+              description={"Ideal for camping and storing your belongings."}
+              price={"49.99"}
+              bgColor={"bg-green-500"}
+              className={"transition delay-300"}
+            />
       <mesh
         castShadow
         receiveShadow
